@@ -1,0 +1,48 @@
+<div class="container">
+
+  <!-- location data table -->
+
+    <h1 class="page-header">
+        {{ title }}
+    </h1>
+    <div>
+        <ul class="pagination text-center">
+            <li ng-click="rowsPerPage = 10" ng-class="rowsPerPage==10 && 'active'">
+                <a>10</a>
+            </li>
+            <li ng-click="rowsPerPage = 20" ng-class="rowsPerPage==20 && 'active'">
+                <a>20</a>
+            </li>
+            <li ng-click="rowsPerPage = 30" ng-class="rowsPerPage==30 && 'active'">
+                <a>30</a>
+            </li>
+
+        </ul>
+        <ul class="pagination text-center">
+            <li ng-click="paginator.setPage(i)" ng-repeat="i in [] | forLoop:0:paginator.pageCount()" ng-class="paginator.page==i && 'active'">
+                <a>{{i+1}}</a>
+            </li>
+            <li ng-click="paginator.lastPage()" ng-class="paginator.isLastPage() && 'disabled'">
+                <a>Last Page</a>
+            </li>
+        </ul>
+    </div>
+    <table class="table-bordered table-condensed">
+        <thead>
+            <tr>
+                <td>Countries</td>
+                <td>Views</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="country in countries | paginate:rowsPerPage">
+                <td>{{country.name}}</td>
+                <td>{{country.views}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="charts">
+        <div id="bar-chart"></div>
+        <div id="donut-chart"></div>
+    </div>
+</div>

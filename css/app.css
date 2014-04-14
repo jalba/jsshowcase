@@ -1,0 +1,12 @@
+table {
+    width: 250px;
+    float: left;
+}
+
+ul.pagination li {
+    cursor: pointer;
+}
+
+.charts {
+	float: left;
+}
